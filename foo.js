@@ -9,4 +9,4 @@ var Grault = /** @class */ (function () {
 }());
 var baz = { name: 'Hatam', age: 27 };
 var fred = new Grault(baz, [3, 2]);
-console.log(fred);
+document.body.innerHTML = fred.getGarply();
