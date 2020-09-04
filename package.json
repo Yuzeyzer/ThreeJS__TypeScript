@@ -1,0 +1,22 @@
+{
+  "name": "threejs__typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yuzeyzer/ThreeJS__TypeScript.git"
+  },
+  "author": "Yuzeyzer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Yuzeyzer/ThreeJS__TypeScript/issues"
+  },
+  "homepage": "https://github.com/Yuzeyzer/ThreeJS__TypeScript#readme",
+  "dependencies": {
+    "three": "^0.120.1"
+  }
+}
