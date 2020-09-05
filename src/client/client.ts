@@ -5,7 +5,8 @@ import { GUI } from '/jsm/libs/dat.gui.module';
 
 const scene: THREE.Scene = new THREE.Scene();
 scene.background = new THREE.Color(0x000000);
-
+const axesHelper = new THREE.AxesHelper(5);
+scene.add(axesHelper);
 const camera: THREE.PerspectiveCamera = new THREE.PerspectiveCamera(
   75,
   window.innerWidth / window.innerHeight,
@@ -45,16 +46,40 @@ document.body.appendChild(stats.dom);
 
 const gui = new GUI();
 const cubeFolder = gui.addFolder('Cube');
-cubeFolder.add(cube.rotation, 'x', 0, Math.PI * 2, 0.01);
-cubeFolder.add(cube.rotation, 'y', 0, Math.PI * 2, 0.01);
-cubeFolder.add(cube.rotation, 'z', 0, Math.PI * 2, 0.01);
-cubeFolder.open();
+
+
+const cubeRotationFolder = cubeFolder.addFolder('Rotation');
+cubeRotationFolder.add(cube.rotation, 'x', 0, Math.PI * 2, 0.01);
+cubeRotationFolder.add(cube.rotation, 'y', 0, Math.PI * 2, 0.01);
+cubeRotationFolder.add(cube.rotation, 'z', 0, Math.PI * 2, 0.01);
+
+
+
+const cubePositionFolder = cubeFolder.addFolder('Position');
+cubePositionFolder.add(cube.position, 'x', 0, 2, 0.01);
+cubePositionFolder.add(cube.position, 'y', 0, 2, 0.01);
+cubePositionFolder.add(cube.position, 'z', 0, 2, 0.01);
+
+
+
+
+const cubeScaleFolder = cubeFolder.addFolder('Scale');
+cubeScaleFolder.add(cube.scale, 'x', -5, 5);
+cubeScaleFolder.add(cube.scale, 'y', -5, 5);
+cubeScaleFolder.add(cube.scale, 'z', -5, 5);
+
+
+
 
 const cameraFolder = gui.addFolder('Camera');
 cameraFolder.add(camera.position, 'z', 2, Math.PI * 3, 0.01);
-cameraFolder.open();
 
-var animate = function () {
+
+cubeFolder.add(cube, 'visible', true);
+
+
+
+const animate = function () {
   requestAnimationFrame(animate);
 
   // cube.rotation.x += 0.01;
