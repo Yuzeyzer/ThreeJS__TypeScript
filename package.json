@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "concurrently -k \"tsc -p ./src/server -w\" \"nodemon ./dist/server/server.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,5 +22,9 @@
     "@types/node": "^14.6.4",
     "express": "^4.17.1",
     "three": "^0.120.1"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0",
+    "nodemon": "^2.0.4"
   }
 }
