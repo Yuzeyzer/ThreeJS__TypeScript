@@ -34,6 +34,7 @@ class App {
         path.join(__dirname, '../../node_modules/three/examples/jsm/libs/dat.gui.module.js'),
       ),
     );
+    app.use('/cube', express.static(path.join(__dirname, '../../dist/client/cube.js')));
     this.server = new http.Server(app);
   }
 

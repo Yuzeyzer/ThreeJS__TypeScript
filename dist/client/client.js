@@ -2,6 +2,7 @@ import * as THREE from '/build/three.module.js';
 import { OrbitControls } from '/jsm/controls/OrbitControls';
 import Stats from '/jsm/libs/stats.module';
 import { GUI } from '/jsm/libs/dat.gui.module';
+import cube from './cube';
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x000000);
 const axesHelper = new THREE.AxesHelper(5);
@@ -10,7 +11,6 @@ const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerH
 const canvas = document.getElementById('canvas');
 const renderer = new THREE.WebGLRenderer({ canvas: canvas });
 renderer.setSize(window.innerWidth, window.innerHeight);
-// document.body.appendChild(renderer.domElement);
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.addEventListener('change', render);
 const geometry = new THREE.BoxGeometry();
@@ -18,35 +18,13 @@ const material = new THREE.MeshBasicMaterial({
     color: 0x00ff00,
     wireframe: true,
 });
-const cube = new THREE.Mesh(geometry, material);
 scene.add(cube);
 camera.position.z = 2;
-// window.addEventListener('resize', onWindowResize, false);
-// function onWindowResize() {
-//   camera.aspect = window.innerWidth / window.innerHeight;
-//   camera.updateProjectionMatrix();
-//   renderer.setSize(window.innerWidth, window.innerHeight);
-//   render();
-// }
 const stats = Stats();
 document.body.appendChild(stats.dom);
 const gui = new GUI();
-const cubeFolder = gui.addFolder('Cube');
-const cubeRotationFolder = cubeFolder.addFolder('Rotation');
-cubeRotationFolder.add(cube.rotation, 'x', 0, Math.PI * 2, 0.01);
-cubeRotationFolder.add(cube.rotation, 'y', 0, Math.PI * 2, 0.01);
-cubeRotationFolder.add(cube.rotation, 'z', 0, Math.PI * 2, 0.01);
-const cubePositionFolder = cubeFolder.addFolder('Position');
-cubePositionFolder.add(cube.position, 'x', 0, 2, 0.01);
-cubePositionFolder.add(cube.position, 'y', 0, 2, 0.01);
-cubePositionFolder.add(cube.position, 'z', 0, 2, 0.01);
-const cubeScaleFolder = cubeFolder.addFolder('Scale');
-cubeScaleFolder.add(cube.scale, 'x', -5, 5);
-cubeScaleFolder.add(cube.scale, 'y', -5, 5);
-cubeScaleFolder.add(cube.scale, 'z', -5, 5);
 const cameraFolder = gui.addFolder('Camera');
 cameraFolder.add(camera.position, 'z', 2, Math.PI * 3, 0.01);
-cubeFolder.add(cube, 'visible', true);
 const animate = function () {
     requestAnimationFrame(animate);
     // cube.rotation.x += 0.01;
@@ -59,6 +37,7 @@ const animate = function () {
 function render() {
     stats.begin();
     renderer.render(scene, camera);
+    cube;
     stats.end();
 }
 render();
